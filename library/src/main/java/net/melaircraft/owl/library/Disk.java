@@ -10,4 +10,11 @@ public interface Disk {
      * @return number of sectors in the disk image
      */
     int getSectorCount();
+
+    /**
+     * Get the disks raw image.
+     *
+     * @return raw disk image
+     */
+    byte[] getImage();
 }
