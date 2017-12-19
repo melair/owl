@@ -1,9 +1,10 @@
 package net.melaircraft.owl.library;
 
-import net.melaircraft.owl.library.excpetion.ResizeWouldTruncateSlotException;
-import net.melaircraft.owl.library.excpetion.InactivateSlotException;
-import net.melaircraft.owl.library.excpetion.InvalidSlotException;
-import net.melaircraft.owl.library.excpetion.LockedSlotException;
+import net.melaircraft.owl.library.excpetion.drive.InvalidDriveException;
+import net.melaircraft.owl.library.excpetion.slot.InactivateSlotException;
+import net.melaircraft.owl.library.excpetion.slot.InvalidSlotException;
+import net.melaircraft.owl.library.excpetion.slot.LockedSlotException;
+import net.melaircraft.owl.library.excpetion.slot.ResizeWouldTruncateSlotException;
 
 /**
  * A disk bundle (a MMB file).
@@ -12,19 +13,21 @@ public interface DiskBundle {
     /**
      * Set the slot which is allocated to the drive number when computer is started.
      *
-     * @param drive drive number
+     * @param drive drive number (0 - 3)
      * @param slot slot number (0 - 510)
+     * @throws InvalidDriveException if the drive number provided is not valid
      * @throws InvalidSlotException if the slot number provided is not valid
      */
-    void setBootSlot(int drive, int slot) throws InvalidSlotException;
+    void setBootSlot(int drive, int slot) throws InvalidDriveException, InvalidSlotException;
 
     /**
      * Get the slot which is allocated to the provided drive number when computer is started.
      *
-     * @param drive drive number
+     * @param drive drive number (0 - 3)
      * @return slot number (0 - 510)
+     * @throws InvalidDriveException if the drive number provided is not valid
      */
-    int getBootSlot(int drive);
+    int getBootSlot(int drive) throws InvalidDriveException;
 
     /**
      * Check to see if a slot is currently occupied.

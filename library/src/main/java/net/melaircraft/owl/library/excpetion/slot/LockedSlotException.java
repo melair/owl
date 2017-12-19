@@ -1,4 +1,4 @@
-package net.melaircraft.owl.library.excpetion;
+package net.melaircraft.owl.library.excpetion.slot;
 
 /**
  * Exception to indicate that a slot is locked and can not be modified.

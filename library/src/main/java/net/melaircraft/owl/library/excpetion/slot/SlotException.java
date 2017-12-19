@@ -1,4 +1,4 @@
-package net.melaircraft.owl.library.excpetion;
+package net.melaircraft.owl.library.excpetion.slot;
 
 /**
  * An exception which relates to a bundles slot.

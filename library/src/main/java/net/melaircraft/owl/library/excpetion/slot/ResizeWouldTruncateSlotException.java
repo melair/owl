@@ -1,4 +1,4 @@
-package net.melaircraft.owl.library.excpetion;
+package net.melaircraft.owl.library.excpetion.slot;
 
 /**
  * Exception to indicate a bundle resize would truncate slots.
