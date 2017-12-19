@@ -1,4 +1,4 @@
-package net.melaircraft.owl.library.excpetion.drive;
+package net.melaircraft.owl.library.exception.drive;
 
 /**
  * Exception to indicate that a drive is invalid.

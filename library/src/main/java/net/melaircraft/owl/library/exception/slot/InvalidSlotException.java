@@ -1,4 +1,4 @@
-package net.melaircraft.owl.library.excpetion.slot;
+package net.melaircraft.owl.library.exception.slot;
 
 /**
  * Exception to indicate that a slot is invalid.

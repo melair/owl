@@ -1,10 +1,10 @@
 package net.melaircraft.owl.library;
 
-import net.melaircraft.owl.library.excpetion.drive.InvalidDriveException;
-import net.melaircraft.owl.library.excpetion.slot.InactivateSlotException;
-import net.melaircraft.owl.library.excpetion.slot.InvalidSlotException;
-import net.melaircraft.owl.library.excpetion.slot.LockedSlotException;
-import net.melaircraft.owl.library.excpetion.slot.ResizeWouldTruncateSlotException;
+import net.melaircraft.owl.library.exception.drive.InvalidDriveException;
+import net.melaircraft.owl.library.exception.slot.InactivateSlotException;
+import net.melaircraft.owl.library.exception.slot.InvalidSlotException;
+import net.melaircraft.owl.library.exception.slot.LockedSlotException;
+import net.melaircraft.owl.library.exception.slot.ResizeWouldTruncateSlotException;
 
 /**
  * A disk bundle (a MMB file).

@@ -1,4 +1,4 @@
-package net.melaircraft.owl.library.excpetion.drive;
+package net.melaircraft.owl.library.exception.drive;
 
 /**
  * An exception which relates to a drive.
