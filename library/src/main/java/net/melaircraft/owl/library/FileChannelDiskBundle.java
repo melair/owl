@@ -5,7 +5,7 @@ import net.melaircraft.owl.library.exception.slot.ResizeWouldTruncateSlotExcepti
 
 public class FileChannelDiskBundle extends ByteBufferDiskBundle {
     @Override
-    public void changeStorageSize(int slot) throws InvalidSlotException, ResizeWouldTruncateSlotException {
+    public void changeStorageSize(int slots) throws InvalidSlotException, ResizeWouldTruncateSlotException {
 
     }
 }

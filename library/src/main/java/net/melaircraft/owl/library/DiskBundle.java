@@ -4,12 +4,34 @@ import net.melaircraft.owl.library.exception.drive.InvalidDriveException;
 import net.melaircraft.owl.library.exception.slot.InactivateSlotException;
 import net.melaircraft.owl.library.exception.slot.InvalidSlotException;
 import net.melaircraft.owl.library.exception.slot.LockedSlotException;
+import net.melaircraft.owl.library.exception.slot.NoStorageSlotException;
 import net.melaircraft.owl.library.exception.slot.ResizeWouldTruncateSlotException;
 
 /**
  * A disk bundle (a MMB file).
  */
 public interface DiskBundle {
+    /** Header flag indicating disk is writable. */
+    byte HEADER_FLAG_DISK_WRITEABLE = (byte) 0x0f;
+    /** Header flag indicating disk is unformatted. */
+    byte HEADER_FLAG_DISK_UNFORMATTED = (byte) 0xf0;
+    /** Sector size on DFS disk. */
+    int SECTOR_SIZE = 256;
+    /** Sectors per track on disk. */
+    int SECTORS_PER_TRACK = 10;
+    /** Number of tracks on a side of a disk. */
+    int TRACKS_PER_DISK = 80;
+    /** Total number of bytes for a disk. */
+    int DISK_SIZE = SECTOR_SIZE * SECTORS_PER_TRACK * TRACKS_PER_DISK;
+    /** Number of sectors at start of MMB for header and catalogue. */
+    int MMB_SECTOR_COUNT = 32;
+    /** Offset until first disk. */
+    int INITIAL_OFFSET = SECTOR_SIZE * MMB_SECTOR_COUNT;
+    /** Offset in header for flags. */
+    int HEADER_FLAG_OFFSET = 15;
+    /** Maximum length of a disk title. */
+    int MAXIMUM_DISK_TITLE = 12;
+
     /**
      * Set the slot which is allocated to the drive number when computer is started.
      *
@@ -46,8 +68,9 @@ public interface DiskBundle {
      *
      * @param slot slot number (0 - 510)
      * @throws InvalidSlotException if the slot number provided is not valid
+     * @throws NoStorageSlotException if the slot number has no storage allocated
      */
-    void activate(int slot) throws InvalidSlotException;
+    void activate(int slot) throws InvalidSlotException, NoStorageSlotException;
 
     /**
      * Deactivate a disk slot from the catalog.
@@ -115,7 +138,7 @@ public interface DiskBundle {
      * @return name of slot
      * @throws InvalidSlotException if the slot number provided is not valid
      */
-    String getName(int slot) throws InvalidSlotException, InactivateSlotException;
+    String getName(int slot) throws InvalidSlotException;
 
     /**
      * Change the name of a slot in the catalogue.
@@ -124,7 +147,7 @@ public interface DiskBundle {
      * @param name new game for slot, up to 12 characters
      * @throws InvalidSlotException if the slot number provided is not valid
      */
-    void rename(int slot, String name) throws InvalidSlotException;
+    void setName(int slot, String name) throws InvalidSlotException;
 
     /**
      * Get the current storage size allocated for this bundle in slots.
