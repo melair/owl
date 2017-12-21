@@ -9,7 +9,6 @@ import net.melaircraft.owl.library.exception.slot.ResizeWouldTruncateSlotExcepti
 
 import java.nio.ByteBuffer;
 import java.nio.charset.StandardCharsets;
-import java.util.concurrent.locks.Lock;
 import java.util.stream.IntStream;
 
 /**
