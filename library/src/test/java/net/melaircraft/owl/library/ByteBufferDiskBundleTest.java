@@ -457,6 +457,18 @@ public class ByteBufferDiskBundleTest {
         assertEquals((byte) 0xff, byteBufferDisk.getByteBuffer().get(DiskBundle.DISK_SIZE - 1));
     }
 
+    @Test(expected = NoStorageSlotException.class)
+    public void testExtractAllocatedSlotNoStorage() {
+        ByteBufferDiskBundle byteBufferDiskBundle = new ByteBufferDiskBundle(0);
+        ByteBuffer byteBuffer = byteBufferDiskBundle.getByteBuffer();
+
+        int slot = 510;
+
+        byteBuffer.put(16 + (slot * 16) + 15, (byte) 0);
+        assertTrue(byteBufferDiskBundle.isOccupied(slot));
+        byteBufferDiskBundle.extract(slot);
+    }
+
     @Test(expected = InvalidSlotException.class)
     public void testInsertBelowSlotRange() {
         new ByteBufferDiskBundle().insert(-1, null);

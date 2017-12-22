@@ -106,6 +106,10 @@ public class ByteBufferDiskBundle implements DiskBundle {
         checkSlot(slot);
         checkSlotOccupied(slot);
 
+        if (slot >= getStorageSize()) {
+            throw new NoStorageSlotException(slot);
+        }
+
         byte[] diskRaw = new byte[DiskBundle.DISK_SIZE];
 
         for (int i = 0; i < DiskBundle.DISK_SIZE; i++) {
