@@ -89,8 +89,9 @@ public interface DiskBundle {
      * @return the extracted disk image
      * @throws InvalidSlotException if the slot number provided is not valid
      * @throws InactivateSlotException if the slot is not currently active
+     * @throws NoStorageSlotException if the slot is allocated but there is no storage allocated
      */
-    Disk extract(int slot) throws InvalidSlotException, InactivateSlotException;
+    Disk extract(int slot) throws InvalidSlotException, InactivateSlotException, NoStorageSlotException;
 
     /**
      * Insert a disk image into the bundle, any disk image already present will be wiped. In the case a smaller disk

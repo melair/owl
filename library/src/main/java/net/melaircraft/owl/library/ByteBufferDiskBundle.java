@@ -102,7 +102,7 @@ public class ByteBufferDiskBundle implements DiskBundle {
     }
 
     @Override
-    public Disk extract(int slot) throws InvalidSlotException, InactivateSlotException {
+    public Disk extract(int slot) throws InvalidSlotException, InactivateSlotException, NoStorageSlotException {
         checkSlot(slot);
         checkSlotOccupied(slot);
 
